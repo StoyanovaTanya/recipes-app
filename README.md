@@ -1,16 +1,34 @@
-# React + Vite
+# Recipes App
+The project is part of the ReactJS course at SoftUni.
+This is a SPA (Single Page Application) recipe app with a user area and CRUD functionalities.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Starting the project
+Install the dependencies:
+npm install
+Run the project:
+npm run dev
+Open a browser and visit http://localhost:5173 (or the address that Vite shows you).
 
-Currently, two official plugins are available:
+# Project structure
+src/components/ — all components
+Home/ — home page
+Recipes/ — list of recipes
+Details/ — details for a specific recipe
+Auth/ — Login and Register components
+Create/ — recipe creation
+Edit/ — recipe editing
+src/layout/ — Layout component with Navbar and <Outlet />
+src/App.jsx — Routing of the entire application
+src/main.jsx — application launch point
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features
+Public pages: Home, Recipes, Details
+Authentication: Login and Register
+User area: Create, edit and delete recipes (CRUD)
+Routing: Navigation between components via React Router
+Components: Separated into independent components, all with a clean structure
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Future improvements
+Connection with Firebase for backend
+Form validation and error handling
+Adding likes and comments to recipes
