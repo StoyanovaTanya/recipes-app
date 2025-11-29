@@ -1,19 +1,41 @@
-import RecipeCard from "./RecipeCard";
-
-const sampleRecipes = [
-  { id: 1, title: "Chicken Soup", category: "Soups"},
-  { id: 2, title: "Greek Salad", category: "Salads" },  
-  { id: 3, title: "Chocolate Cake", category: "Desserts"},
-];
+import { recipes } from "../../data/recipes";
+import { Link } from "react-router-dom";
 
 export default function Recipes() {
   return (
-    <section style={{ padding: "20px"}}>
+    <section style={{ padding: "20px" }}>
       <h2>All Recipes</h2>
 
-      {sampleRecipes.map(recipe => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: "20px",
+        marginTop: "20px"
+      }}>
+        {recipes.map(recipe => (
+          <div key={recipe.id} 
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              borderRadius: "8px"
+            }}
+          >
+            <img 
+              src={recipe.image} 
+              alt={recipe.title}
+              style={{ width: "100%", borderRadius: "6px" }}
+            />
+
+            <h3>{recipe.title}</h3>
+
+            <p>{recipe.description}</p>
+
+            <Link to={`/recipes/${recipe.id}`}>
+              View Details
+            </Link>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
