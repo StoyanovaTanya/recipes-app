@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { recipes } from "../../data/recipes";
+import styles from "./Details.module.css";
 
 export default function Details() {
-  const { id} = useParams();
+  const { id } = useParams();
   const recipe = recipes.find(r => r.id === Number(id));
 
   if (!recipe) {
@@ -10,34 +11,35 @@ export default function Details() {
   }
 
   return (
-    <section style={{ padding: "20px"}}>
-      <h2>{recipe.title}</h2>
-      
-      <img
-        src={recipe.image}
-        alt={recipe.title}
-        style={{ width: "300px", borderRadius: "10px", marginBottom: "20px"}}
-      />
+    <section className={styles.container}>
+      {/* Снимка */}
+      <div className={styles.imageContainer}>
+        <img src={recipe.image} alt={recipe.title} className={styles.image} />
+      </div>
 
-      <p style={{ maxWidth: "500px", lineHeight: "1.6"}}>
-        {recipe.description}  
-      </p>  
+      {/* Информация за рецептата */}
+      <div className={styles.info}>
+        <h2 className={styles.title}>{recipe.title}</h2>
+        <p className={styles.description}>{recipe.description}</p>
 
-      <h3>Ingredients:</h3>
-      <ul>
-        {recipe.ingredients?.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+        <h3>Ingredients:</h3>
+        <ul className={styles.list}>
+          {recipe.ingredients.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
 
-      <h3 style={{ marginTop: "20px" }}>Preparation:</h3>
-      <p style={{ maxWidth: "600px", lineHeight: "1.6" }}>
-        {recipe.steps}
-      </p>
+        <h3>Steps:</h3>
+        <ol className={styles.list}>
+          {recipe.steps.split(". ").map((step, index) => (
+            step && <li key={index}>{step.trim()}.</li>
+          ))}
+        </ol>
 
-      <div style={{ marginTop: "20px"}}>
-        <button style={{ marginRight: "10px" }}>Edit</button>
-        <button>Delete</button>
+        {/* Бутон за обратно */}
+        <Link to="/recipes" className={styles.button}>
+          Back to Recipes
+        </Link>
       </div>
     </section>
   );
