@@ -1,59 +1,56 @@
 import { useState } from "react";
+import styles from "./Create.module.css";
 
 export default function Create() {
   const [title, setTitle] = useState("");
-  const [ingredients, setIngredients] = useState("");
+  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-
+  const [ingredients, setIngredients] = useState("");
+  const [steps, setSteps] = useState("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !ingredients || !description || !imageUrl) {
+    if (!title || !image || !description || !ingredients || !steps ) {
       alert("All fields are required!");
       return;
     }
 
-    console.log("New Recipe:", { title, ingredients, description, imageUrl})
+    console.log("New Recipe:", { title, image, description, ingredients, steps})
+    alert("Recipe created! Check console for data.")
   };
 
   return (
-    <section style={{ padding: "20px"}}>
-        <h2>Create Recipe</h2>
-
-        <form onSubmit={handleSubmit} style={{ maxWidth: "400px", marginTop: "20px"}}>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            style={{ width: "100%", marginBottom: "10px"}}
+    <section className={styles.container}>
+      <h2>Create Recipe</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label>Title:</label>
+          <input type="text" value={title} 
+            onChange={(e) => setTitle(e.target.value)} 
           />
 
-          <label>Ingredients:</label>
-          <textarea
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            style={{ width: "100%", marginBottom: "10px" }}
+        <label>Image URL:</label>
+          <input type="text" value={image} 
+            onChange={(e) => setImage(e.target.value)} 
           />
 
-          <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{ width: "100%", marginBottom: "10px" }}
+        <label>Description:</label>
+          <textarea value={description} 
+            onChange={(e) => setDescription(e.target.value)} 
           />
 
-          <label>Image URL:</label>
-          <input
-            type="text"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            style={{ width: "100%", marginBottom: "10px" }}
+        <label>Ingredients (comma separated):</label>
+          <textarea value={ingredients} 
+            onChange={(e) => setIngredients(e.target.value)} 
           />
 
-          <button type="submit">Create Recipe</button>
-        </form>
+        <label>Steps (dot separated):</label>
+          <textarea value={steps} 
+            onChange={(e) => setSteps(e.target.value)} 
+          />
+
+        <button type="submit" className={styles.button}>Create</button>
+      </form>
     </section>
   );
 }
