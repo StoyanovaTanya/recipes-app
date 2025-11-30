@@ -23,6 +23,18 @@ export default function Details() {
         {recipe.description}  
       </p>  
 
+      <h3>Ingredients:</h3>
+      <ul>
+        {recipe.ingredients?.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+
+      <h3 style={{ marginTop: "20px" }}>Preparation:</h3>
+      <p style={{ maxWidth: "600px", lineHeight: "1.6" }}>
+        {recipe.steps}
+      </p>
+
       <div style={{ marginTop: "20px"}}>
         <button style={{ marginRight: "10px" }}>Edit</button>
         <button>Delete</button>
