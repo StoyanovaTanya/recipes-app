@@ -8,6 +8,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
+import PrivateRoute from "./components/Auth/PrivateRoute";
 
 function App() {
   
@@ -20,8 +21,10 @@ function App() {
           <Route path="/recipes/:id" element={<Details />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/edit/:id" element={<Edit />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/create" element={<Create />} />
+            <Route path="/edit/:id" element={<Edit />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
