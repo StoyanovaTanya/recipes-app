@@ -9,6 +9,7 @@ import Register from "./components/Auth/Register";
 import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import PrivateRoute from "./components/Auth/PrivateRoute";
+import GuestRoute from "./components/Auth/GuestRoute";
 
 function App() {
   
@@ -19,8 +20,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<Details />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          
+          <Route element={<GuestRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+          
           <Route element={<PrivateRoute />}>
             <Route path="/create" element={<Create />} />
             <Route path="/edit/:id" element={<Edit />} />

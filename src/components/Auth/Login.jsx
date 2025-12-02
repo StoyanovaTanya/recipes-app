@@ -17,10 +17,7 @@ export default function Login() {
       return;
     }
 
-    // Записваме user в AuthContext
     login(email);
-
-    // Пренасочване към Recipes след логин
     navigate("/recipes");
   };
 
