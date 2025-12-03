@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { addRecipe } from "../../data/recipes";
 import styles from "./Create.module.css";
+import { useNavigate } from "react-router";
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -7,6 +9,8 @@ export default function Create() {
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
+
+  const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +20,18 @@ export default function Create() {
       return;
     }
 
-    console.log("New Recipe:", { title, image, description, ingredients, steps})
-    alert("Recipe created! Check console for data.")
+   const newRecipe = {
+      title,
+      image,
+      description,
+      ingredients: ingredients.split(",").map(i => i.trim()),
+      steps
+    };
+
+    addRecipe(newRecipe);
+
+    alert("Recipe created!");
+    navigate("/recipes"); // връща към списъка с рецепти
   };
 
   return (

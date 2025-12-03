@@ -9,7 +9,7 @@ import risotto from "../assets/images/risotto.jpg";
 import chickentacos from "../assets/images/chickentacos.jpg";
 import lasagna from "../assets/images/lasagna.jpg";
 
-export const recipes = [
+export let recipes = [
   {
     id: 1,
     title: "Spaghetti Carbonara",
@@ -182,3 +182,8 @@ export const recipes = [
     steps: "Layer lasagna sheets with meat sauce and cheeses. Bake at 190°C for 40 minutes."
   },
 ];
+
+export const addRecipe = (recipe) => {
+  recipe.id = recipes.length ? recipes[recipes.length - 1].id + 1 : 1;
+  recipes.push(recipe);
+};
