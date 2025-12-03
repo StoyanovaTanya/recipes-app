@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { recipes } from "../../data/recipes";
 import styles from "./Edit.module.css";
 
 export default function Edit() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const recipe = recipes.find(r => r.id === Number (id));
 
   const [title, setTitle] = useState(recipe?.title || "");
@@ -13,21 +15,33 @@ export default function Edit() {
   const [ingredients, setIngredients] = useState(recipe?.ingredients.join(", ") || "");
   const [steps, setSteps] = useState(recipe?.steps || "");  
 
+  useEffect(() => {
+    if (recipe) {
+      setTitle(recipe.title);
+      setImage(recipe.image);
+      setDescription(recipe.description);
+      setIngredients(recipe.ingredients.join(", "));
+      setSteps(recipe.steps);
+    }
+  }, [recipe]);
+
+  if (!recipe) {
+    return <h2>Recipe not found</h2>;
+  }
+
   const handleSubmit =(e) => {
     e.preventDefault();
 
-    if (!title || !image || !description || !ingredients || !steps) {
-      alert("All fields are required!");
-      return;
-    }
-    
-    console.log("Edited Recipe:", {title, image, description, ingredients, steps});
-    alert("Recipe updated! Check console for data.");
+    recipe.title = title;
+    recipe.image = image;
+    recipe.description = description;
+    recipe.ingredients = ingredients.split(",").map(i => i.trim());
+    recipe.steps = steps;
+
+    alert("Recipe updated!");
+    navigate(`/recipes/${recipe.id}`);
   };
 
-  if (!recipe) {
-    return <h2>Recipe not found</h2>
-  }
 
   return (
     <section className={styles.container}>

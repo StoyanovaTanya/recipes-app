@@ -37,9 +37,15 @@ export default function Details() {
         </ol>
 
         {/* Бутон за обратно */}
-        <Link to="/recipes" className={styles.button}>
-          Back to Recipes
-        </Link>
+        <div>
+          <Link to="/recipes" className={styles.button}>
+            Back to Recipes
+          </Link>
+
+          <Link to={`/edit/${recipe.id}`} className={styles.button}>
+            Edit Recipe
+          </Link>
+        </div>
       </div>
     </section>
   );
