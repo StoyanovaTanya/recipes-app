@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,18 +16,20 @@ export default function Register() {
       alert("All fields are required!");
       return;
     }
-    
+
     if (password !== confirmPassword) {
-      alert("Password do not macth!");
+      alert("Passwords do not match!");
       return;
     }
 
-    console.log("Register:", { email, password, confirmPassword });
-
+    // Регистрация чрез AuthContext
+    register({ email });
+    alert("Registration successful!");
+    navigate("/recipes"); // пренасочване след регистрация
   };
 
   return (
-     <section style={{ padding: "20px" }}>
+    <section style={{ padding: "20px" }}>
       <h2>Register</h2>
 
       <form onSubmit={handleSubmit} style={{ maxWidth: "300px", marginTop: "20px" }}>
@@ -55,4 +61,4 @@ export default function Register() {
       </form>
     </section>
   );
-};
+}

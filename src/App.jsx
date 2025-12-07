@@ -10,10 +10,12 @@ import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import GuestRoute from "./components/Auth/GuestRoute";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   
   return (
+      <AuthProvider>
       <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
@@ -28,11 +30,12 @@ function App() {
           
           <Route element={<PrivateRoute />}>
             <Route path="/create" element={<Create />} />
-            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/recipes/:id/edit" element={<Edit />} />
           </Route>
         </Route>
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 

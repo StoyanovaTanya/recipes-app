@@ -17,7 +17,8 @@ export default function Login() {
       return;
     }
 
-    login(email);
+    login({ email });
+    alert("Login successful!");
     navigate("/recipes");
   };
 

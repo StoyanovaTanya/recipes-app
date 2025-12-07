@@ -44,14 +44,26 @@
   line-height: 1.4;
 }
 
-/* --- БУТОН --- */
-.button {
-  display: inline-block;
-  padding: 8px 12px;
-  text-align: center;
-  background: #164431;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
+.buttonGroup {
+  display: flex;
+  gap: 10px;      /* разстояние между бутоните */
   margin-top: 10px;
+}
+
+.button,
+.buttonDelete {
+  flex: 1;        /* еднаква ширина и височина за всички бутони */
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 1.2;
+  color: white;
+  background-color: #164431;
+}
+
+.buttonDelete {
+  background-color: #e74c3c;
 }

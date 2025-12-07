@@ -1,47 +1,44 @@
-import { Link } from "react-router-dom";
-import styles from "./Recipes.module.css";
 import { useEffect, useState } from "react";
+import styles from "./Recipes.module.css";
+import RecipeCard from "./RecipeCard";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-  fetch("/recipes")
-    .then(res => {
-      console.log("Fetch response:", res);
-      return res.json();
-    })
-    .then(data => {
-      console.log("Loaded recipes:", data);
-      setRecipes(data);
-    })
-    .catch(err => console.error("Error fetching recipes:", err));
+    fetch("/recipes")
+      .then(res => res.json())
+      .then(data => setRecipes(data))
+      .catch(err => console.error("Error fetching recipes:", err));
   }, []);
-  
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this recipe?");
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/recipes/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+
+      setRecipes(recipes.filter(r => r.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Error deleting recipe");
+    }
+  };
+
   return (
     <section style={{ padding: "20px" }}>
       <h2 className={styles.heading}>All Recipes</h2>
       <div className={styles.grid}>
         {recipes.map(recipe => (
-          <div key={recipe.id} className={styles.card}>
-      
-            <img 
-              src={recipe.image} 
-              alt={recipe.title} 
-              className={styles.image}
-            />
-
-            <h3 className={styles.title}>{recipe.title}</h3>
-
-            <p className={styles.description}>{recipe.description}</p>
-
-            <Link to={`/recipes/${recipe.id}`} className={styles.button}>
-              View Details
-            </Link>
-
-          </div>
+          <RecipeCard
+            key={recipe.id}
+            recipe={recipe}
+            onDelete={handleDelete}
+          />
         ))}
-      </div>  
-  </section>
+      </div>
+    </section>
   );
 }

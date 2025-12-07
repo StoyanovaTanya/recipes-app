@@ -3,6 +3,8 @@
     {
       "id": "1",
       "title": "Spaghetti Carbonara",
+      "author": "test@test.com",
+      "category": "Pasta",
       "image": "/images/carbonara.jpg",
       "description": "Classic Italian pasta with eggs, pecorino cheese, black pepper and crispy bacon.",
       "ingredients": [
@@ -17,6 +19,8 @@
     {
       "id": "2",
       "title": "Chicken Soup",
+      "author": "test@test.com",
+      "category": "Soups",
       "image": "/images/chickensoup.jpg",
       "description": "Warm homemade chicken soup.",
       "ingredients": [
@@ -35,6 +39,8 @@
     {
       "id": "3",
       "title": "Chocolate Cake",
+      "author": "test@test.com",
+      "category": "Desserts",
       "image": "/images/chocolatecake.jpg",
       "description": "Moist chocolate cake with ganache.",
       "ingredients": [
@@ -54,6 +60,8 @@
     {
       "id": "4",
       "title": "Fresh Garden Salad",
+      "author": "test@test.com",
+      "category": "Salads",
       "image": "/images/salad.jpg",
       "description": "Fresh vegetables with olive oil and lemon juice.",
       "ingredients": [
@@ -70,6 +78,8 @@
     {
       "id": "5",
       "title": "Margherita Pizza",
+      "author": "hi@test.com",
+      "category": "Pizza",
       "image": "/images/pizza.jpg",
       "description": "Italian pizza with tomato sauce, mozzarella and basil.",
       "ingredients": [
@@ -85,6 +95,8 @@
     {
       "id": "6",
       "title": "Beef Burger",
+      "author": "test@test.com",
+      "category": "Burgers, tacos",
       "image": "/images/burger.jpg",
       "description": "Juicy beef burger with lettuce, tomato and crispy fries.",
       "ingredients": [
@@ -101,6 +113,8 @@
     {
       "id": "7",
       "title": "Pancakes",
+      "author": "hi@test.com",
+      "category": "Desserts",
       "image": "/images/pancakes.jpg",
       "description": "Fluffy pancakes served with maple syrup and berries.",
       "ingredients": [
@@ -116,6 +130,8 @@
     {
       "id": "8",
       "title": "Mushroom Risotto",
+      "author": "test@test.com",
+      "category": "Мeatless dishes",
       "image": "/images/risotto.jpg",
       "description": "Creamy Italian risotto with mushrooms and parmesan.",
       "ingredients": [
@@ -132,6 +148,8 @@
     {
       "id": "9",
       "title": "Chicken Tacos",
+      "author": "hi@test.com",
+      "category":"Burgers, tacos",
       "image": "/images/chickentacos.jpg",
       "description": "Soft tortillas filled with spicy chicken, vegetables and cheese.",
       "ingredients": [
@@ -147,6 +165,8 @@
     {
       "id": "10",
       "title": "Lasagna",
+      "author": "hi@test.com",
+      "category":"Pasta",
       "image": "/images/lasagna.jpg",
       "description": "Layered lasagna with beef, ricotta, mozzarella and tomato sauce.",
       "ingredients": [
@@ -163,7 +183,9 @@
     {
       "id": "efc5",
       "title": "Fry Fish",
-      "image": "https://images.pexels.com/photos/10432706/pexels-photo-10432706.jpeg",
+      "author": "test@test.com",
+      "category": "Fish",
+      "image": "https://images.pexels.com/photos/1123250/pexels-photo-1123250.jpeg",
       "description": "Fry fish of your choice.",
       "ingredients": [
         "Fish",
