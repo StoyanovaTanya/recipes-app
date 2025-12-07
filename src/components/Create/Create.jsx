@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { addRecipe } from "../../data/recipes";
 import styles from "./Create.module.css";
 import { useNavigate } from "react-router";
 
@@ -12,7 +11,7 @@ export default function Create() {
 
   const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title || !image || !description || !ingredients || !steps ) {
@@ -25,15 +24,29 @@ export default function Create() {
       image,
       description,
       ingredients: ingredients.split(",").map(i => i.trim()),
-      steps
+      steps: steps
     };
 
-    addRecipe(newRecipe);
+    try {
+      const res = await fetch("/recipes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newRecipe)
+      });
 
-    alert("Recipe created!");
-    navigate("/recipes"); // връща към списъка с рецепти
+      if (!res.ok) {
+        throw new Error("Failed to create recipe");
+      }
+
+      alert("Recipe created!");
+      navigate("/recipes"); // връща към списъка с рецепти
+
+    } catch (err) {
+      console.error("Create error:", err);
+      alert("Error creating recipe");
+    }
   };
-
+  
   return (
     <section className={styles.container}>
       <h2>Create Recipe</h2>
