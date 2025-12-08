@@ -10,6 +10,7 @@ export default function Edit() {
 
   const [recipe, setRecipe] = useState({
     title: "",
+    category: "",
     image: "",
     description: "",
     ingredients: "",
@@ -38,7 +39,8 @@ export default function Edit() {
           ...data,
           ingredients: Array.isArray(data.ingredients)
             ? data.ingredients.join(", ")
-            : data.ingredients
+            : data.ingredients,
+          category: data.category || ""
         });
       });
   }, [id, user.email, navigate]);
@@ -56,7 +58,8 @@ export default function Edit() {
     const updated = {
       ...recipe,
       ingredients: recipe.ingredients.split(",").map(i => i.trim()),
-      author: user.email
+      author: user.email,
+      category: recipe.category
     };
 
     fetch(`/recipes/${id}`, {
@@ -77,6 +80,14 @@ export default function Edit() {
           type="text"
           name="title"
           value={recipe.title}
+          onChange={onChange}
+        />
+
+        <label>Category:</label>
+        <input
+          type="text"
+          name="category"
+          value={recipe.category}
           onChange={onChange}
         />
 

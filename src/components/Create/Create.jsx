@@ -12,12 +12,12 @@ export default function Create() {
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !image || !description || !ingredients || !steps) {
+    if (!title || !image || !description || !ingredients || !steps || !category) {
       alert("All fields are required!");
       return;
     }
@@ -44,6 +44,7 @@ export default function Create() {
       alert("Recipe created successfully!");
       
       setTitle("");
+      setCategory("");
       setImage("");
       setDescription("");
       setIngredients("");

@@ -1,32 +1,21 @@
-import {Outlet, Link} from "react-router-dom"
-import { useAuth } from "../context/AuthContext";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import styles from "./MainLayout.module.css";
+import Recipes from "../components/Recipes/Recipes";
+import RecipeCard from "../components/Recipes/RecipeCard";
 
 export default function MainLayout() {
-    const { user, logout } = useAuth();
+  return (
+    <div className={styles.layout}>
+      <Navbar />
 
-    return (
-        <>
-            <nav style ={{ display: "flex", gap: "15px", padding: "10px" }}>
-                <Link to="/">Home</Link>
-                <Link to="/recipes">Recipes</Link>
+      <main className={styles.content}>
+        <Outlet />
+      </main>
 
-                {user ? (
-                    <>
-                        <span>Welcome, {user.email}</span>
-                        <button onClick={logout}>Logout</button>
-                        <Link to="/create">Create</Link>
-                    </>
-                ) : (
-                    <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
-                    </>
-                )}
-            </nav>
-
-            <main>
-                <Outlet />
-            </main>
-        </>
-    );
+      <footer className={styles.footer}>
+        <p>© 2025 RecipeHub • All rights reserved</p>
+      </footer>
+    </div>
+  );
 }
