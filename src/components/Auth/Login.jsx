@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import styles from "../../components/Navbar/Navbar.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -43,8 +44,13 @@ export default function Login() {
           style={{ width: "100%", marginBottom: "10px" }}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.logoutBtn}>Login</button>
       </form>
+
+      <div style={{ marginTop: "50px" }}>
+        <h3>Don't have an account?</h3>
+        <Link to="/register" className={styles.logoutBtn}>Register</Link>
+      </div>
     </section>
   );
 }

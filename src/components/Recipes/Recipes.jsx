@@ -4,6 +4,13 @@ import RecipeCard from "./RecipeCard";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+function updateRecipe(updatedRecipe) {
+  setRecipes(prev =>
+    prev.map(r => (r.id === updatedRecipe.id ? updatedRecipe : r))
+  );
+}
 
   useEffect(() => {
     fetch("/recipes")
@@ -29,13 +36,29 @@ export default function Recipes() {
 
   return (
     <section style={{ padding: "20px" }}>
-      <h2 className={styles.heading}>All Recipes</h2>
+      <div className={styles.header}>
+        <h2 className={styles.heading}>All Recipes</h2>
+        <input
+        type="text"
+        placeholder="Search by title or category..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className={styles.searchInput}
+        />
+      </div>
+
       <div className={styles.grid}>
-        {recipes.map(recipe => (
+        {recipes
+        .filter(r => 
+          r.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+          r.category.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .map(recipe => (
           <RecipeCard
             key={recipe.id}
             recipe={recipe}
             onDelete={handleDelete}
+            onUpdateRecipe={updateRecipe}
           />
         ))}
       </div>

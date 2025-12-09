@@ -13,6 +13,21 @@ export default function Create() {
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
   const [category, setCategory] = useState("");
+  
+  const categories = [
+    "Breakfast", 
+    "Lunch", 
+    "Dinner", 
+    "Dessert", 
+    "Fast foods", 
+    "Fish", 
+    "Meatless dishes",
+    "Pasta",
+    "Pizza",
+    "Salads",
+    "Soups",
+    "Snack"
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,11 +84,16 @@ export default function Create() {
         />
 
         <label>Category:</label>
-        <input
-          type="text"
+        <select
+          name="category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-        />
+        >
+          <option value="">Select a category</option>
+          {categories.map((c) => (
+          <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
 
         <label>Image URL:</label>
         <input

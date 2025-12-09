@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import styles from "../../components/Navbar/Navbar.module.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -22,10 +23,9 @@ export default function Register() {
       return;
     }
 
-    // Регистрация чрез AuthContext
     register({ email });
     alert("Registration successful!");
-    navigate("/recipes"); // пренасочване след регистрация
+    navigate("/recipes"); 
   };
 
   return (
@@ -57,7 +57,7 @@ export default function Register() {
           style={{ width: "100%", marginBottom: "10px" }}
         />
 
-        <button type="submit">Register</button>
+        <button type="submit" className={styles.logoutBtn}>Register</button>
       </form>
     </section>
   );

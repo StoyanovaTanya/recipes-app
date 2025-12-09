@@ -14,7 +14,11 @@
         "50g parmesan or pecorino",
         "Black pepper"
       ],
-      "steps": "Cook the pasta. Fry the bacon. Mix eggs and cheese. Combine everything while pasta is hot."
+      "steps": "Cook the pasta. Fry the bacon. Mix eggs and cheese. Combine everything while pasta is hot.",
+      "likes": 1,
+      "favorites": [
+        "test@test.com"
+      ]
     },
     {
       "id": "2",
@@ -34,7 +38,9 @@
         "Black pepper",
         "Parsley"
       ],
-      "steps": "Boil chicken in water or broth. Add chopped vegetables and cook until soft. Season with salt, pepper and parsley."
+      "steps": "Boil chicken in water or broth. Add chopped vegetables and cook until soft. Season with salt, pepper and parsley.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "3",
@@ -55,7 +61,9 @@
         "200ml heavy cream",
         "1 tbsp butter"
       ],
-      "steps": "Mix the dry ingredients for the cake. Add eggs, melted butter and milk. Bake at 180°C for 35 minutes. For the ganache: heat the cream until just boiling, pour over chopped chocolate, add butter and mix until smooth. Spread the ganache over the cooled cake."
+      "steps": "Mix the dry ingredients for the cake. Add eggs, melted butter and milk. Bake at 180°C for 35 minutes. For the ganache: heat the cream until just boiling, pour over chopped chocolate, add butter and mix until smooth. Spread the ganache over the cooled cake.",
+      "likes": 1,
+      "favorites": []
     },
     {
       "id": "4",
@@ -73,7 +81,9 @@
         "Salt",
         "Lemon juice"
       ],
-      "steps": "Cut all vegetables, mix in a bowl and season with olive oil, salt and lemon juice."
+      "steps": "Cut all vegetables, mix in a bowl and season with olive oil, salt and lemon juice.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "5",
@@ -90,13 +100,15 @@
         "Olive oil",
         "Salt"
       ],
-      "steps": "Spread tomato sauce on dough, add mozzarella, bake at 220°C for 12 minutes. Finish with basil and olive oil."
+      "steps": "Spread tomato sauce on dough, add mozzarella, bake at 220°C for 12 minutes. Finish with basil and olive oil.",
+      "likes": 2,
+      "favorites": []
     },
     {
       "id": "6",
       "title": "Beef Burger",
       "author": "test@test.com",
-      "category": "Burgers, tacos",
+      "category": "Fast foods",
       "image": "/images/burger.jpg",
       "description": "Juicy beef burger with lettuce, tomato and crispy fries.",
       "ingredients": [
@@ -108,7 +120,9 @@
         "Salt",
         "Black pepper"
       ],
-      "steps": "Shape beef patty, season and cook in a pan. Build the burger with vegetables and cheese in the bun."
+      "steps": "Shape beef patty, season and cook in a pan. Build the burger with vegetables and cheese in the bun.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "7",
@@ -125,7 +139,9 @@
         "1 tsp baking powder",
         "Butter for frying"
       ],
-      "steps": "Mix all ingredients and fry small portions of batter in butter until golden on both sides."
+      "steps": "Mix all ingredients and fry small portions of batter in butter until golden on both sides.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "8",
@@ -143,13 +159,15 @@
         "Butter",
         "Salt"
       ],
-      "steps": "Cook onion and mushrooms in butter. Add rice and slowly pour broth while stirring until creamy. Add parmesan."
+      "steps": "Cook onion and mushrooms in butter. Add rice and slowly pour broth while stirring until creamy. Add parmesan.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "9",
       "title": "Chicken Tacos",
       "author": "hi@test.com",
-      "category":"Burgers, tacos",
+      "category": "Fast foods",
       "image": "/images/chickentacos.jpg",
       "description": "Soft tortillas filled with spicy chicken, vegetables and cheese.",
       "ingredients": [
@@ -160,13 +178,15 @@
         "Cheese",
         "Taco seasoning"
       ],
-      "steps": "Cook chicken with taco seasoning. Fill tortillas with chicken, vegetables and cheese."
+      "steps": "Cook chicken with taco seasoning. Fill tortillas with chicken, vegetables and cheese.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "10",
       "title": "Lasagna",
       "author": "hi@test.com",
-      "category":"Pasta",
+      "category": "Pasta",
       "image": "/images/lasagna.jpg",
       "description": "Layered lasagna with beef, ricotta, mozzarella and tomato sauce.",
       "ingredients": [
@@ -178,7 +198,9 @@
         "Parmesan",
         "Salt"
       ],
-      "steps": "Layer lasagna sheets with meat sauce and cheeses. Bake at 190°C for 40 minutes."
+      "steps": "Layer lasagna sheets with meat sauce and cheeses. Bake at 190°C for 40 minutes.",
+      "likes": 0,
+      "favorites": []
     },
     {
       "id": "efc5",
@@ -193,7 +215,9 @@
         "herbs",
         "salt and black peper"
       ],
-      "steps": "Clean the fish, cut into portions. Season with salt and pepper and spices to your taste. Heat the oil. Fry the fish and serve. Bon appetit."
+      "steps": "Clean the fish, cut into portions. Season with salt and pepper and spices to your taste. Heat the oil. Fry the fish and serve. Bon appetit.",
+      "likes": 0,
+      "favorites": []
     }
   ]
 }

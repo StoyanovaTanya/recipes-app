@@ -18,6 +18,21 @@ export default function Edit() {
     author: ""
   });
 
+  const categories = [
+    "Breakfast", 
+    "Lunch", 
+    "Dinner", 
+    "Dessert", 
+    "Fast foods", 
+    "Fish", 
+    "Meatless dishes",
+    "Pasta",
+    "Pizza",
+    "Salads",
+    "Soups",
+    "Snack"
+  ];
+  
   useEffect(() => {
     fetch(`/recipes/${id}`)
       .then(res => res.json())
@@ -84,12 +99,17 @@ export default function Edit() {
         />
 
         <label>Category:</label>
-        <input
-          type="text"
+        <select
           name="category"
           value={recipe.category}
           onChange={onChange}
-        />
+          className={styles.input}
+        >
+          <option value="">Select a category</option>
+          {categories.map((c) => (
+          <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
 
         <label>Image URL:</label>
         <input
