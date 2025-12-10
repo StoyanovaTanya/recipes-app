@@ -2,25 +2,33 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import styles from "./Recipes.module.css";
 
-export default function RecipeCard({ recipe, onUpdateLikes }) {
+export default function RecipeCard({ recipe, onUpdateRecipe }) {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  function handleToggleFavorite(recipe) {
+  async function handleToggleFavorite() {
     if (!user) return alert("You must be logged in to like a recipe!");
 
     const isFavorite = recipe.favorites?.includes(user.email);
-    const updatedFavorites = isFavorite
-      ? recipe.favorites.filter(email => email !== user.email)
-      : [...(recipe.favorites || []), user.email];
 
-    fetch(`/recipes/${recipe.id}`, {
+    const updatedRecipe = {
+      ...recipe,
+      favorites: isFavorite
+        ? recipe.favorites.filter(email => email !== user.email)
+        : [...(recipe.favorites || []), user.email]
+    };
+
+    const res = await fetch(`/recipes/${recipe.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ favorites: updatedFavorites })
-    })
-    .then(res => res.json())
-    .then(updated => onUpdateLikes(updated)); // може да се преименува на onUpdateRecipe
+      body: JSON.stringify({ favorites: updatedRecipe.favorites })
+    });
+
+    const data = await res.json();
+
+    if (onUpdateRecipe) {
+      onUpdateRecipe(data);
+    }
   }
 
   return (
@@ -38,24 +46,24 @@ export default function RecipeCard({ recipe, onUpdateLikes }) {
           View Details
         </button>
 
-        <button 
+        <button
           className={`${styles.button} ${
-          user && recipe.favorites?.includes(user.email) ? styles.favorite : ""
+            user && recipe.favorites?.includes(user.email)
+              ? styles.favorite
+              : ""
           }`}
-          onClick={() => handleToggleFavorite(recipe)}
+          onClick={handleToggleFavorite}
         >
           ❤️ {recipe.favorites?.length || 0}
         </button>
 
         {user && user.email === recipe.author && (
-        <>
-        <button
-          className={styles.button}
-          onClick={() => navigate(`/recipes/${recipe.id}/edit`)}
-        >
-          Edit
-        </button>
-        </>
+          <button
+            className={styles.button}
+            onClick={() => navigate(`/recipes/${recipe.id}/edit`)}
+          >
+            Edit
+          </button>
         )}
       </div>
     </article>

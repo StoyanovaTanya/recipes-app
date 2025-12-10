@@ -1,0 +1,72 @@
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 80px 20px;
+  border-radius: 12px;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.70),  
+      rgba(255, 255, 255, 0.70)   
+    ), url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #3c3c3c;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  min-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+.title {
+  font-size: 4rem;
+  color: #164431;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: #3c3c3c;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style-type: disc;
+  margin-left: 20px;
+  text-align: left;
+  color: #3c3c3c;
+  margin-bottom: 30px;
+}
+
+.list li {
+  margin-bottom: 8px;
+}
+
+.exploreBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  max-width: 200px;
+  color: white;
+  background-color: #164431;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;   
+  margin: 0 auto;
+}
+
+.exploreBtn:hover {
+  background-color: #0f2d21;
+}

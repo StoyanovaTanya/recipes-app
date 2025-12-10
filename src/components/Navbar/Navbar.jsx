@@ -19,11 +19,21 @@ export default function Navbar() {
         </li>
 
         {user && (
+          <>
+          <li>
+            <NavLink to="/my-recipes" className={({ isActive }) => (isActive ? styles.active : "")}>
+              My Recipes
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/create" className={({ isActive }) => (isActive ? styles.active : "")}>
               Create
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/favorites">Favorites</NavLink>
+          </li>
+          </>
         )}
       </ul>
 

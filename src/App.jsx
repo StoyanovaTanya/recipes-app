@@ -11,6 +11,8 @@ import Edit from "./components/Edit/Edit";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import GuestRoute from "./components/Auth/GuestRoute";
 import { AuthProvider } from "./context/AuthContext";
+import MyRecipes from "./components/MyRecipes/MyRecipes";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   
@@ -31,6 +33,8 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/create" element={<Create />} />
             <Route path="/recipes/:id/edit" element={<Edit />} />
+            <Route path="/my-recipes" element={<MyRecipes />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Route>
         </Route>
       </Routes>

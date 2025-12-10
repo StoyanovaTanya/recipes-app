@@ -102,7 +102,9 @@
       ],
       "steps": "Spread tomato sauce on dough, add mozzarella, bake at 220°C for 12 minutes. Finish with basil and olive oil.",
       "likes": 2,
-      "favorites": []
+      "favorites": [
+        "test@test.com"
+      ]
     },
     {
       "id": "6",
@@ -141,7 +143,9 @@
       ],
       "steps": "Mix all ingredients and fry small portions of batter in butter until golden on both sides.",
       "likes": 0,
-      "favorites": []
+      "favorites": [
+        "test@test.com"
+      ]
     },
     {
       "id": "8",
@@ -217,7 +221,9 @@
       ],
       "steps": "Clean the fish, cut into portions. Season with salt and pepper and spices to your taste. Heat the oil. Fry the fish and serve. Bon appetit.",
       "likes": 0,
-      "favorites": []
+      "favorites": [
+        "test@test.com"
+      ]
     }
   ]
 }
