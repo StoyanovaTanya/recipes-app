@@ -5,6 +5,8 @@ import RecipeCard from "./RecipeCard";
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const recipesPerPage = 6; 
 
 function updateRecipe(updatedRecipe) {
   setRecipes(prev =>
@@ -34,6 +36,20 @@ function updateRecipe(updatedRecipe) {
     }
   };
 
+  const filteredRecipes = recipes.filter(r =>
+    r.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    r.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLast = currentPage * recipesPerPage;
+  const indexOfFirst = indexOfLast - recipesPerPage;
+  const currentRecipes = filteredRecipes.slice(indexOfFirst, indexOfLast);
+
+  const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
+
+  const goToNext = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
+  const goToPrev = () => setCurrentPage(prev => Math.max(prev - 1, 1));
+  
   return (
     <section style={{ padding: "20px" }}>
       <div className={styles.header}>
@@ -42,18 +58,16 @@ function updateRecipe(updatedRecipe) {
         type="text"
         placeholder="Search by title or category..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {
+           setSearchTerm(e.target.value); 
+           setCurrentPage(1);
+        }}
         className={styles.searchInput}
         />
       </div>
 
       <div className={styles.grid}>
-        {recipes
-        .filter(r => 
-          r.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-          r.category.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        .map(recipe => (
+        {currentRecipes.map(recipe => (
           <RecipeCard
             key={recipe.id}
             recipe={recipe}
@@ -62,6 +76,19 @@ function updateRecipe(updatedRecipe) {
           />
         ))}
       </div>
+
+      {filteredRecipes.length > recipesPerPage && (
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <button onClick={goToPrev} disabled={currentPage === 1} style={{ marginRight: "10px" }}>
+            Previous
+          </button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <button onClick={goToNext} disabled={currentPage === totalPages} style={{ marginLeft: "10px" }}>
+            Next
+          </button>
+        </div>
+      )}
+
     </section>
   );
 }
