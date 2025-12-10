@@ -10,18 +10,12 @@ The application includes a public area, private user area, authentication, catal
 npm install
 
 ### 2. Start the JSON server (Backend)
-The project uses a local `json-server` REST API.
-
 npm run server
-
-This starts the backend at:
-http://localhost:5000
+# Backend runs at http://localhost:5000
 
 ### 3. Start the React application
-npm run dev
-
-Open:  
-👉 **http://localhost:5173**
+npm run dev  
+# Frontend runs at http://localhost:5173
 
 ---
 
@@ -29,10 +23,12 @@ Open:
 
 src/
 │
-├── assets/imiges
+├── assets/images
 ├── components/
 │ ├── Home/ – Public home page
 │ ├── Recipes/ – Catalog of all recipes, RecipeCard
+│ ├── MyRecipes/ – View only own recipes
+│ ├── Favorites/ – Favorites recipes
 │ ├── Details/ – Single recipe view (dynamic page)
 │ ├── Create/ – Create new recipe (private)
 │ ├── Edit/ – Edit recipe (private, author only)
@@ -62,6 +58,8 @@ src/
 - Create new recipe  
 - Edit own recipe  
 - Delete own recipe  
+- View **My Recipes** (only your own recipes)  
+- Mark recipes as **Favorite**  
 - Route guards prevent unauthorized access  
 
 ### 📌 **CRUD Functionality**
@@ -93,6 +91,12 @@ Stored via REST API using `json-server`.
 - Clean component structure  
 - Responsive-friendly layout  
 
+### 💎 Bonus Features
+- Search / Filter recipes by title or category  
+- Favorites list page  
+- Sort recipes (A→Z, Z→A, Newest, Oldest)
+
+
 ---
 
 ## ⚠️ Error Handling & Validation
@@ -106,8 +110,7 @@ Stored via REST API using `json-server`.
 ## 💡 Possible Future Improvements
 - Deploy backend to a real service (Firebase, Render)
 - Replace alerts with notification system
-- Add likes / comments on recipes
-- Add search and filter functionality
+- Add comments on recipes
 - Full responsive redesign
 
 ---
